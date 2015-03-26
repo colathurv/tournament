@@ -270,7 +270,7 @@ def testPairingsOdd(ids):
     pairings = swissPairings(tid)
     if len(pairings) != 2:
         raise ValueError(
-            "testOddPairings failed ...."
+            "testPairingsOdd failed ...."
             "For five players, swissPairings should return two pairs.")
     
     # Testing after matches have been played
@@ -279,17 +279,17 @@ def testPairingsOdd(ids):
     pairings = swissPairings(tid)
     if len(pairings) != 2:
         raise ValueError(
-            "testOddPairings failed ...."
+            "testPairingsOdd failed ...."
             "For five players, swissPairings should return two pairs.")
     [(pid1, pname1, pid2, pname2), (pid3, pname3, pid4, pname4)] = pairings
     correct_pairs = set([frozenset([id4, id5]), frozenset([id1, id3])])
     actual_pairs = set([frozenset([pid1, pid2]), frozenset([pid3, pid4])])
     if correct_pairs != actual_pairs:
         raise ValueError(
-            "testOddPairings failed ...."
+            "testPairingsOdd failed ...."
             "After one round, the player that did not play in it " 
             "should be paired .")
-    print "testOddPairings passed ...."
+    print "testPairingsOdd passed ...."
      
 if __name__ == '__main__':
     ids = testRegistration()

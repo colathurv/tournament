@@ -231,16 +231,15 @@ def swissPairings(tournament_id):
     if(countPlayers(tournament_id) % 2 == 1):
         del standings[0]
     pairings = [] 
+    temp = []
     
-    # Defining 4 variables does not look pretty, but is a necessary evil, 
-    # considering that tuples are immutable and cannot be extended or 
-    # overwritten.
+    # Considering that tuples are immutable and cannot be extended or 
+    # overwritten, we use a list as opposed to a tuple for temp
     for i in range(len(standings)):
         if ( i % 2 == 0 ):
-            temp1 = standings[i][0]
-            temp2 = standings[i][1]
+            temp = [standings[i][0], standings[i][1]]
 	else:
-	    temp3 = standings[i][0]
-	    temp4 = standings[i][1]
-            pairings.append((temp1, temp2,temp3, temp4))
+	    temp.append(standings[i][0]) 
+	    temp.append(standings[i][1])
+            pairings.append((temp[0], temp[1],temp[2], temp[3]))
     return pairings
