@@ -1,0 +1,44 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='category_styles.css') }}">
+</head>
+
+<body>
+    <div class = 'head-bar'>
+				 SRCM Bookstore
+				<div class = 'logout-div' >
+					<form action = '{{url_for('gdisconnect')}}' >
+						<input class = 'logout-input' type = 'submit' value = 'Logout' name = 'logout-button'>
+					</form>
+		    	</div>
+    </div>
+
+	<div class = 'pane edit-pane'>
+	<form action="{{ url_for('editItem', category_id = category_id, item_id = item_id)}}" method = 'post'>
+		<div class = 'page-title'>Edit Item</div>
+        <div class ='edit-item-header'>Title</div>
+        <div class='edit-item-value' ><input class='edit-input-value' type='text' name='title' value='{{item.name}}'></div>
+		<div class ='edit-item-header'>Description</div>
+		<div class='edit-item-value' ><input class='edit-input-value' type='text' name ='description' value='{{item.description}}'></div>
+		<div class ='edit-item-header'>SKU</div>
+        <div class='edit-item-value' ><input class='edit-input-value' type='text' name ='sku' value='{{item.sku}}'></div>
+		<div class ='edit-item-header'>Category</div>
+		<div class='edit-item-value' >
+			<select class='edit-input-value' name='category'>
+                {% for c in categories %}
+                	{% if c.id == category_id %}
+						<div> <option value='{{c.id}}' selected >{{c.name}}</option> </div>
+					{% else %}
+					    <div> <option value='{{c.id}}' >{{c.name}}</option> </div>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class='edit-item-value' ><input class='edit-submit-button' type='submit' value='Submit'></div>
+	</form>
+	    <a href = '{{url_for('showCategory')}}'> Cancel </a>
+    </div>
+
+</body>
+</html>
