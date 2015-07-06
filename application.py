@@ -250,7 +250,7 @@ def editItem(category_id, item_id):
 			        changed = True
 			        category_id = editedItem.category_id
 			if editedItem.sku != request.form['sku']:
-				editedItem.category_id = request.form['sku']
+				editedItem.sku = request.form['sku']
 			        changed = True
 			if changed:
 				editedItem.modified_on = datetime.datetime.now()
